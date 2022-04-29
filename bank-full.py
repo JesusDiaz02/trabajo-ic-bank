@@ -43,3 +43,15 @@ rangos = [0, 8, 15, 18, 25, 40, 60,100]
 nombres = ['1','2','3','4','5','6','7']
 data.age=pd.cut(data.age, rangos, labels=nombres)
 data.dropna(axis=0,how='any',inplace=True)
+
+#partir la tabla en dos
+data_train = data[:22701]
+data_test = data[22701:]
+
+x=np.array(data_train.drop(['y'], 1))
+y=np.array(data_train.y)# 0 sale 1 no sale
+
+x_train, x_test, y_train, y_test= train_test_split(x, y, test_size=0.2)
+
+x_test_out = np.array(data_test.drop(['y'], 1))
+y_test_out = np.array(data_test.y)# 0 sale 1 no sale
