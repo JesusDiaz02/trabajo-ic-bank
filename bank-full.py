@@ -27,3 +27,19 @@ data.default.replace(['no', 'yes'], [0, 1], inplace=True)
 data.housing.replace(['yes', 'no'], [0, 1], inplace=True)
 
 data.loan.replace(['no', 'yes'], [0, 1], inplace=True)
+
+data['contact'].replace(['cellular','unknown','telephone'], [0, 1, 2], inplace=True)
+
+data['month'].replace(['may','jul','aug','jun','nov','apr','feb','jan',
+                     'oct','sep','mar','dec'], [0,1,2,3,4,5,6,7,8,9,10,11], inplace=True)
+
+
+data['poutcome'].replace(['unknown','failure', 'other','success'], [0, 1, 2, 3], inplace=True)
+
+data.y.replace(['no', 'yes'], [0, 1], inplace=True)
+
+data.age.replace(np.nan,41, inplace=True)
+rangos = [0, 8, 15, 18, 25, 40, 60,100]
+nombres = ['1','2','3','4','5','6','7']
+data.age=pd.cut(data.age, rangos, labels=nombres)
+data.dropna(axis=0,how='any',inplace=True)
