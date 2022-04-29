@@ -55,3 +55,96 @@ x_train, x_test, y_train, y_test= train_test_split(x, y, test_size=0.2)
 
 x_test_out = np.array(data_test.drop(['y'], 1))
 y_test_out = np.array(data_test.y)# 0 sale 1 no sale
+
+# seleccionar modelo regresion logistica
+logreg = LogisticRegression(solver='lbfgs', max_iter=7600)
+
+#entreno el modelo
+logreg.fit(x_train, y_train)
+
+#metricas
+
+print('*'*50)
+print('Regresion Logistica')
+
+#accuracy de entrenamiento train
+print(f'accuracy de train de entrenamiento:{logreg.score(x_train, y_train)}')
+#accuracy de entrenamiento test
+print(f'accuracy de test de entrenamiento:{logreg.score(x_test,y_test)}')
+#accuracy de validacion
+print(f'accuracy de validacion:{logreg.score(x_test_out,y_test_out)}')
+
+# seleccionar maquina soporte vectorial
+svc = SVC(gamma='auto')
+
+#entreno el modelo
+svc.fit(x_train, y_train)
+
+#metricas
+
+print('*'*50)
+print('Maquina de soporte vectorial')
+
+#accuracy de entrenamiento train
+print(f'accuracy de train de entrenamiento:{svc.score(x_train, y_train)}')
+#accuracy de entrenamiento test
+print(f'accuracy de test de entrenamiento:{svc.score(x_test,y_test)}')
+#accuracy de validacion
+print(f'accuracy de validacion:{svc.score(x_test_out,y_test_out)}')
+
+
+
+# seleccionar modelo arbol de decisiones
+arbol = DecisionTreeClassifier()
+
+#entreno el modelo
+arbol.fit(x_train, y_train)
+
+#metricas
+
+print('*'*50)
+print('arbol de decisiones|')
+
+#accuracy de entrenamiento train
+print(f'accuracy de train de entrenamiento:{arbol.score(x_train, y_train)}')
+#accuracy de entrenamiento test
+print(f'accuracy de test de entrenamiento:{arbol.score(x_test,y_test)}')
+#accuracy de validacion
+print(f'accuracy de validacion:{arbol.score(x_test_out,y_test_out)}')
+
+
+# seleccionar modelo Naive Bayes
+gnb = GaussianNB()
+
+#entreno el modelo
+gnb.fit(x_train, y_train)
+
+#metricas
+
+print('*'*50)
+print('Naive Bayes')
+
+#accuracy de entrenamiento train
+print(f'accuracy de train de entrenamiento:{gnb.score(x_train, y_train)}')
+#accuracy de entrenamiento test
+print(f'accuracy de test de entrenamiento:{gnb.score(x_test,y_test)}')
+#accuracy de validacion
+print(f'accuracy de validacion:{gnb.score(x_test_out,y_test_out)}')
+
+# seleccionar modelo KNN
+knn = neighbors.KNeighborsClassifier()
+
+#entreno el modelo
+knn.fit(x_train, y_train)
+
+#metricas
+
+print('*'*50)
+print('modelo KNN')
+
+#accuracy de entrenamiento train
+print(f'accuracy de train de entrenamiento:{knn.score(x_train, y_train)}')
+#accuracy de entrenamiento test
+print(f'accuracy de test de entrenamiento:{knn.score(x_test,y_test)}')
+#accuracy de validacion
+print(f'accuracy de validacion:{knn.score(x_test_out,y_test_out)}')
